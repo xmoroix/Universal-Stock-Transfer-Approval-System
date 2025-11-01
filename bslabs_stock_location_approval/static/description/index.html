@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .oe_row {
+            margin-bottom: 30px;
+        }
+
+        .oe_container {
+            padding: 20px 0;
+        }
+
+        .oe_dark {
+            background-color: #F8F9FA;
+        }
+
+        h1, h2, h3 {
+            color: #2C3E50;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 30px 0;
+            color: #2E7D32;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2E7D32;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            margin-top: 25px;
+            color: #388E3C;
+        }
+
+        .oe_demo {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .oe_demo img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .oe_span12 {
+            width: 100%;
+        }
+
+        ul.fa-ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.fa-ul li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        ul.fa-ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .alert-info {
+            background-color: #E3F2FD;
+            border-left: 4px solid #2196F3;
+            color: #1565C0;
+        }
+
+        .alert-success {
+            background-color: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            color: #2E7D32;
+        }
+
+        .feature-box {
+            background: #F5F5F5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .badge-success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .badge-warning {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        .badge-info {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2E7D32;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <section class="oe_container">
+        <div class="oe_row">
+            <h1 class="text-center">
+                Stock Location Approval
+            </h1>
+            <p class="text-center" style="font-size: 1.2em; color: #666;">
+                Universal approval workflow for stock transfers from restricted locations
+            </p>
+        </div>
+    </section>
+
+    <section class="oe_container oe_dark">
+        <div class="oe_row">
+            <h2>✨ Key Features</h2>
+            <div class="oe_span12">
+                <ul class="fa-ul">
+                    <li>Mark any stock location as requiring approval for outgoing transfers</li>
+                    <li>Assign multiple responsible users who can approve transfers</li>
+                    <li>Automatic notifications via activities, email, and chatter</li>
+                    <li>Block transfer validation until approval is granted</li>
+                    <li>Clean UI with smart button status indicators</li>
+                    <li>Color-coded approval status in list view</li>
+                    <li>Complete audit trail with approval history</li>
+                    <li>Bilingual support (English & French)</li>
+                    <li>Works seamlessly with standard Odoo stock workflows</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container">
+        <div class="oe_row">
+            <h2>🎯 Perfect For</h2>
+            <div class="oe_span12">
+                <div class="feature-box">
+                    <h3>🏥 Healthcare - Pharmacy Control</h3>
+                    <p>Prevent medication dispensing without pharmacist approval. Ensure all drugs leaving the pharmacy are authorized by qualified personnel.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>💎 High-Value Inventory</h3>
+                    <p>Require management approval before expensive items or precious materials leave secure storage areas.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>🏭 Manufacturing - Quality Control</h3>
+                    <p>Implement quality checkpoints requiring QC inspector approval before products can be shipped to customers.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>🏢 Multi-Warehouse Management</h3>
+                    <p>Control internal transfers between warehouse sections with supervisor authorization requirements.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>🔬 Laboratory - Controlled Substances</h3>
+                    <p>Track and authorize all removals from controlled substance storage with proper documentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container oe_dark">
+        <div class="oe_row">
+            <h2>⚙️ Simple Configuration</h2>
+            <div class="oe_span12">
+                <h3>Step 1: Configure Locations</h3>
+                <p>Navigate to <strong>Inventory → Configuration → Locations</strong> and:</p>
+                <ul>
+                    <li>Check <strong>"Require Approval for Outgoing"</strong></li>
+                    <li>Select <strong>"Responsible Users"</strong> who can approve</li>
+                    <li>Save - that's it!</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>That's all!</strong> The approval workflow is now active for that location.
+                    Any transfer FROM this location will automatically require approval.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container">
+        <div class="oe_row">
+            <h2>🔔 Automatic Notifications</h2>
+            <div class="oe_span12">
+                <p>When a transfer requires approval, responsible users are notified via:</p>
+                <ul class="fa-ul">
+                    <li><strong>Activity Dashboard:</strong> New activity appears with transfer details</li>
+                    <li><strong>Email Alerts:</strong> Automatic email notification (if email configured)</li>
+                    <li><strong>Chatter Messages:</strong> @mention in the transfer's chatter</li>
+                </ul>
+                <p>Approvers can quickly find their pending approvals using the <strong>"My Approvals"</strong> filter.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container oe_dark">
+        <div class="oe_row">
+            <h2>🎨 Clean User Interface</h2>
+            <div class="oe_span12">
+                <h3>Transfer Form</h3>
+                <ul class="fa-ul">
+                    <li><strong>Smart Buttons:</strong> Status indicators in button box (Waiting Approval, Approved, Rejected)</li>
+                    <li><strong>Action Buttons:</strong> Approve/Reject buttons only visible to authorized users</li>
+                    <li><strong>No Clutter:</strong> Doesn't crowd the status bar - uses clean smart button design</li>
+                    <li><strong>Approval Tab:</strong> Dedicated tab showing approval details and history</li>
+                </ul>
+
+                <h3>Transfer List View</h3>
+                <ul class="fa-ul">
+                    <li><strong>Approval Column:</strong> Color-coded badges for quick status recognition</li>
+                    <li><span class="badge badge-warning">Pending</span> Yellow badge for transfers awaiting approval</li>
+                    <li><span class="badge badge-success">Approved</span> Green badge for approved transfers</li>
+                    <li>Column automatically hidden when approval not applicable</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container">
+        <div class="oe_row">
+            <h2>🔒 Security & Audit</h2>
+            <div class="oe_span12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Authorization Check</strong></td>
+                            <td>Only users in "Responsible Users" list can approve/reject</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Validation Blocking</strong></td>
+                            <td>Physically prevents transfer validation without approval</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Approval Tracking</strong></td>
+                            <td>Records who approved and when with timestamp</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Complete History</strong></td>
+                            <td>All actions logged in chatter for compliance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Read-Only Audit</strong></td>
+                            <td>Cannot modify approval history after creation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container oe_dark">
+        <div class="oe_row">
+            <h2>🌍 Multi-Language Support</h2>
+            <div class="oe_span12">
+                <p>Fully translated and ready to use in:</p>
+                <ul class="fa-ul">
+                    <li>🇬🇧 <strong>English</strong> - Complete</li>
+                    <li>🇫🇷 <strong>French</strong> - Complete</li>
+                </ul>
+                <p>Easy to add more languages using Odoo's standard translation tools.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container">
+        <div class="oe_row">
+            <h2>🔧 Technical Details</h2>
+            <div class="oe_span12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Module Name</strong></td>
+                            <td><code>bslabs_stock_location_approval</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Version</strong></td>
+                            <td>16.0.1.0.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Odoo Version</strong></td>
+                            <td>16.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dependencies</strong></td>
+                            <td><code>stock</code>, <code>mail</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>License</strong></td>
+                            <td>LGPL-3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Category</strong></td>
+                            <td>Inventory/Inventory</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-info mt-4">
+                    <strong>Non-Intrusive Design:</strong> This module doesn't modify Odoo's core stock workflow.
+                    The approval system runs in parallel, ensuring compatibility with other stock modules and easy upgrades.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container oe_dark">
+        <div class="oe_row">
+            <h2>📚 Documentation</h2>
+            <div class="oe_span12">
+                <p>Complete documentation included:</p>
+                <ul class="fa-ul">
+                    <li><strong>README.md</strong> - Comprehensive user and technical documentation</li>
+                    <li><strong>IMPROVEMENTS.md</strong> - Detailed changelog of enhancements</li>
+                    <li><strong>DESIGN_DECISIONS.md</strong> - Technical architecture explanation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container">
+        <div class="oe_row">
+            <h2>🆘 Support</h2>
+            <div class="oe_span12">
+                <p><strong>Author:</strong> Bilal Benmerzoug</p>
+                <p><strong>Website:</strong> <a href="https://adoctor.org">https://adoctor.org</a></p>
+                <p><strong>Email:</strong> support@adoctor.org</p>
+
+                <div class="alert alert-success mt-4">
+                    <strong>Professional Support Available</strong><br>
+                    Need customization? Want to add features? Contact us for professional Odoo development services.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container oe_dark">
+        <div class="oe_row text-center">
+            <h2>Ready to Improve Your Inventory Control?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">
+                Install now and start managing approvals efficiently! 🚀
+            </p>
+        </div>
+    </section>
+</body>
+</html>

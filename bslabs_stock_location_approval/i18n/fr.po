@@ -1,0 +1,211 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * bslabs_stock_location_approval
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-01 12:00:00\n"
+"PO-Revision-Date: 2025-11-01 12:00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_location__require_approval
+msgid "Require Approval for Outgoing"
+msgstr "Nécessite une approbation pour les sorties"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,help:bslabs_stock_location_approval.field_stock_location__require_approval
+msgid "If checked, transfers from this location need approval before validation"
+msgstr "Si coché, les transferts depuis cet emplacement nécessitent une approbation avant validation"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_location__responsible_user_ids
+msgid "Responsible Users"
+msgstr "Utilisateurs responsables"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,help:bslabs_stock_location_approval.field_stock_location__responsible_user_ids
+msgid "Users who can approve transfers from this location"
+msgstr "Utilisateurs pouvant approuver les transferts depuis cet emplacement"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_picking__approval_state
+msgid "Approval State"
+msgstr "État d'approbation"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields.selection,name:bslabs_stock_location_approval.selection__stock_picking__approval_state__no_approval
+msgid "No Approval Required"
+msgstr "Aucune approbation requise"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields.selection,name:bslabs_stock_location_approval.selection__stock_picking__approval_state__pending
+msgid "Waiting for Approval"
+msgstr "En attente d'approbation"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields.selection,name:bslabs_stock_location_approval.selection__stock_picking__approval_state__approved
+msgid "Approved"
+msgstr "Approuvé"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields.selection,name:bslabs_stock_location_approval.selection__stock_picking__approval_state__rejected
+msgid "Rejected"
+msgstr "Rejeté"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_picking__approval_required
+msgid "Approval Required"
+msgstr "Approbation requise"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_picking__approver_ids
+msgid "Approvers"
+msgstr "Approbateurs"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_picking__approved_by
+msgid "Approved By"
+msgstr "Approuvé par"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_picking__approved_date
+msgid "Approval Date"
+msgstr "Date d'approbation"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,field_description:bslabs_stock_location_approval.field_stock_picking__can_approve
+#: model:ir.model.fields,help:bslabs_stock_location_approval.field_stock_picking__can_approve
+msgid "Can Approve"
+msgstr "Peut approuver"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.model.fields,help:bslabs_stock_location_approval.field_stock_picking__can_approve
+msgid "Whether current user can approve/reject this transfer"
+msgstr "Si l'utilisateur actuel peut approuver/rejeter ce transfert"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.ui.view,arch_db:bslabs_stock_location_approval.view_picking_form_approval
+msgid "Approve"
+msgstr "Approuver"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.ui.view,arch_db:bslabs_stock_location_approval.view_picking_form_approval
+msgid "Reject"
+msgstr "Rejeter"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.ui.view,arch_db:bslabs_stock_location_approval.view_picking_form_approval
+msgid "Approval"
+msgstr "Approbation"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.ui.view,arch_db:bslabs_stock_location_approval.view_picking_form_approval
+msgid "Waiting Approval"
+msgstr "En attente d'approbation"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.ui.view,arch_db:bslabs_stock_location_approval.view_picking_internal_search_approval
+msgid "Pending Approval"
+msgstr "En attente d'approbation"
+
+#. module: bslabs_stock_location_approval
+#: model:ir.ui.view,arch_db:bslabs_stock_location_approval.view_picking_internal_search_approval
+msgid "My Approvals"
+msgstr "Mes approbations"
+
+#. module: bslabs_stock_location_approval
+#: model:mail.activity.type,name:bslabs_stock_location_approval.mail_activity_data_approval_needed
+msgid "Stock Transfer Approval"
+msgstr "Approbation de transfert de stock"
+
+#. module: bslabs_stock_location_approval
+#: model:mail.activity.type,summary:bslabs_stock_location_approval.mail_activity_data_approval_needed
+msgid "Approve Stock Transfer"
+msgstr "Approuver le transfert de stock"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "This transfer requires approval from: %s\nCurrent state: %s"
+msgstr "Ce transfert nécessite l'approbation de : %s\nÉtat actuel : %s"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "No approver assigned"
+msgstr "Aucun approbateur assigné"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "You are not authorized to approve this transfer."
+msgstr "Vous n'êtes pas autorisé à approuver ce transfert."
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "✓ Transfer approved by %s"
+msgstr "✓ Transfert approuvé par %s"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "Transfer Approved"
+msgstr "Transfert approuvé"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "You are not authorized to reject this transfer."
+msgstr "Vous n'êtes pas autorisé à rejeter ce transfert."
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "✗ Transfer rejected by %s"
+msgstr "✗ Transfert rejeté par %s"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "Transfer Rejected"
+msgstr "Transfert rejeté"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "Stock Transfer Approval Required"
+msgstr "Approbation de transfert de stock requise"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "Transfer %s from %s to %s requires your approval.<br/>Source Location: <strong>%s</strong><br/>Destination: <strong>%s</strong><br/>Scheduled Date: %s"
+msgstr "Le transfert %s de %s vers %s nécessite votre approbation.<br/>Emplacement source : <strong>%s</strong><br/>Destination : <strong>%s</strong><br/>Date prévue : %s"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "Not set"
+msgstr "Non défini"
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "This transfer requires approval from: %s<br/>Please review and approve or reject this transfer."
+msgstr "Ce transfert nécessite l'approbation de : %s<br/>Veuillez examiner et approuver ou rejeter ce transfert."
+
+#. module: bslabs_stock_location_approval
+#: code:addons/bslabs_stock_location_approval/models/stock_picking.py:0
+#, python-format
+msgid "Approval Required"
+msgstr "Approbation requise"

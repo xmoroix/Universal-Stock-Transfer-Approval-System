@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend stock picking form view -->
+    <record id="view_picking_form_approval" model="ir.ui.view">
+        <field name="name">stock.picking.form.approval</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <!-- Add approval buttons in header -->
+            <xpath expr="//header" position="inside">
+                <field name="can_approve" invisible="1"/>
+                <button name="action_approve"
+                        string="Approve"
+                        type="object"
+                        attrs="{'invisible': ['|', '|', ('approval_state', '!=', 'pending'), ('approval_required', '=', False), ('can_approve', '=', False)]}"
+                        groups="stock.group_stock_user"
+                        class="btn-primary"/>
+                <button name="action_reject"
+                        string="Reject"
+                        type="object"
+                        attrs="{'invisible': ['|', '|', ('approval_state', '!=', 'pending'), ('approval_required', '=', False), ('can_approve', '=', False)]}"
+                        groups="stock.group_stock_user"
+                        class="btn-secondary"/>
+            </xpath>
+
+            <!-- Add approval status icon next to buttons -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button"
+                        type="action"
+                        name="%(stock.action_picking_tree_all)d"
+                        icon="fa-clock-o"
+                        attrs="{'invisible': [('approval_state', '!=', 'pending')]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text text-warning">Waiting Approval</span>
+                    </div>
+                </button>
+                <button class="oe_stat_button"
+                        type="action"
+                        name="%(stock.action_picking_tree_all)d"
+                        icon="fa-check-circle"
+                        attrs="{'invisible': [('approval_state', '!=', 'approved')]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text text-success">Approved</span>
+                    </div>
+                </button>
+                <button class="oe_stat_button"
+                        type="action"
+                        name="%(stock.action_picking_tree_all)d"
+                        icon="fa-times-circle"
+                        attrs="{'invisible': [('approval_state', '!=', 'rejected')]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text text-danger">Rejected</span>
+                    </div>
+                </button>
+            </xpath>
+
+            <!-- Add approval fields in form -->
+            <xpath expr="//page[@name='operations']" position="after">
+                <page string="Approval" attrs="{'invisible': [('approval_required', '=', False)]}">
+                    <group>
+                        <group>
+                            <field name="approval_required"/>
+                            <field name="approver_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="approved_by"/>
+                            <field name="approved_date"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add approval state column to tree/list view -->
+    <record id="view_picking_tree_approval" model="ir.ui.view">
+        <field name="name">stock.picking.tree.approval</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="approval_state"
+                       string="Approval"
+                       optional="show"
+                       decoration-warning="approval_state == 'pending'"
+                       decoration-success="approval_state == 'approved'"
+                       decoration-danger="approval_state == 'rejected'"
+                       widget="badge"
+                       attrs="{'invisible': [('approval_state', '=', 'no_approval')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add filter for pending approvals -->
+    <record id="view_picking_internal_search_approval" model="ir.ui.view">
+        <field name="name">stock.picking.search.approval</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='late']" position="after">
+                <separator/>
+                <filter string="Pending Approval"
+                        name="pending_approval"
+                        domain="[('approval_state', '=', 'pending')]"/>
+                <filter string="My Approvals"
+                        name="my_approvals"
+                        domain="[('approver_ids', 'in', uid)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_location_form_approval" model="ir.ui.view">
+        <field name="name">stock.location.form.approval</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <!-- Add approval fields in the Additional Information group -->
+            <xpath expr="//group[@name='additional_info']/field[@name='return_location']" position="after">
+                <field name="require_approval"/>
+                <field name="responsible_user_ids"
+                       widget="many2many_tags"
+                       attrs="{'invisible': [('require_approval', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
