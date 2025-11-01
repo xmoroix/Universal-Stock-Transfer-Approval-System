@@ -37,22 +37,41 @@ class StockPicking(models.Model):
         help='Whether current user can approve/reject this transfer'
     )
 
-    @api.depends('location_id', 'location_id.require_approval', 'picking_type_code')
+    @api.depends('location_id', 'location_id.require_approval', 'picking_type_code', 'state')
     def _compute_approval_required(self):
+        """
+        Compute if approval is required for this transfer.
+
+        Approval is ONLY required when:
+        1. Location has require_approval enabled
+        2. Transfer type is outgoing or internal
+        3. Transfer is in 'waiting' OR 'assigned' state (after clicking "Mark as Todo")
+           - 'waiting' = products not reserved yet
+           - 'assigned' = products reserved and ready (the "Ready" status)
+
+        Draft transfers are ignored. Completed/cancelled transfers reset to no_approval.
+        This prevents retroactive application to old transfers.
+        """
         for picking in self:
-            # Check if source location requires approval for outgoing transfers
+            # Check approval when in 'waiting' or 'assigned' state (after "Mark as Todo")
+            # 'assigned' is the "Ready" state that appears after availability check
             if (picking.location_id.require_approval and
-                picking.picking_type_code in ['outgoing', 'internal']):
+                picking.picking_type_code in ['outgoing', 'internal'] and
+                picking.state in ['waiting', 'assigned']):  # Waiting OR Ready state
+
                 picking.approval_required = True
-                # Only set to pending and notify if transitioning from no_approval
-                if picking.approval_state == 'no_approval':
+
+                # Set to pending and notify if transitioning from no_approval
+                if picking.approval_state == 'no_approval' and picking.approver_ids:
                     picking.approval_state = 'pending'
-                    # Notify approvers (only if there are approvers assigned)
-                    if picking.approver_ids:
+                    # Only notify if not in install/upgrade mode
+                    if not self.env.context.get('install_mode'):
                         picking._notify_approvers_needed()
             else:
                 picking.approval_required = False
-                picking.approval_state = 'no_approval'
+                # Reset approval state for draft/done/cancelled transfers
+                if picking.state in ['draft', 'done', 'cancel']:
+                    picking.approval_state = 'no_approval'
 
     @api.depends('location_id', 'location_id.responsible_user_ids')
     def _compute_approver_ids(self):
@@ -62,6 +81,7 @@ class StockPicking(models.Model):
             else:
                 picking.approver_ids = False
 
+    @api.depends('approver_ids')
     def _compute_can_approve(self):
         """Check if current user is in the approver list"""
         for picking in self:

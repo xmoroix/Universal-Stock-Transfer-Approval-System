@@ -6,25 +6,48 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
-            <!-- Add approval buttons in header -->
-            <xpath expr="//header" position="inside">
+            <!-- Add invisible fields at the beginning of form for attrs usage -->
+            <xpath expr="//sheet" position="before">
+                <field name="approval_state" invisible="1"/>
+                <field name="approval_required" invisible="1"/>
                 <field name="can_approve" invisible="1"/>
-                <button name="action_approve"
-                        string="Approve"
-                        type="object"
-                        attrs="{'invisible': ['|', '|', ('approval_state', '!=', 'pending'), ('approval_required', '=', False), ('can_approve', '=', False)]}"
-                        groups="stock.group_stock_user"
-                        class="btn-primary"/>
-                <button name="action_reject"
-                        string="Reject"
-                        type="object"
-                        attrs="{'invisible': ['|', '|', ('approval_state', '!=', 'pending'), ('approval_required', '=', False), ('can_approve', '=', False)]}"
-                        groups="stock.group_stock_user"
-                        class="btn-secondary"/>
             </xpath>
 
-            <!-- Add approval status icon next to buttons -->
+            <!-- Hide print buttons to reduce button_box crowding (especially in French) -->
+            <xpath expr="//button[@name='do_print_picking']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_open_label_type']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Add approval status indicators and action buttons in button_box -->
             <xpath expr="//div[@name='button_box']" position="inside">
+                <!-- Approve and Reject action buttons (only for pending approvals) -->
+                <button name="action_approve"
+                        string="Approve Transfer"
+                        type="object"
+                        class="oe_stat_button btn-success"
+                        icon="fa-check"
+                        attrs="{'invisible': ['|', '|', ('approval_state', '!=', 'pending'), ('approval_required', '=', False), ('can_approve', '=', False)]}"
+                        groups="stock.group_stock_user">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Approve</span>
+                    </div>
+                </button>
+                <button name="action_reject"
+                        string="Reject Transfer"
+                        type="object"
+                        class="oe_stat_button btn-danger"
+                        icon="fa-times"
+                        attrs="{'invisible': ['|', '|', ('approval_state', '!=', 'pending'), ('approval_required', '=', False), ('can_approve', '=', False)]}"
+                        groups="stock.group_stock_user">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Reject</span>
+                    </div>
+                </button>
+
+                <!-- Status indicators (non-clickable) -->
                 <button class="oe_stat_button"
                         type="action"
                         name="%(stock.action_picking_tree_all)d"
@@ -76,9 +99,10 @@
     <record id="view_picking_tree_approval" model="ir.ui.view">
         <field name="name">stock.picking.tree.approval</field>
         <field name="model">stock.picking</field>
-        <field name="inherit_id" ref="stock.view_picking_internal_search_tree"/>
+        <field name="inherit_id" ref="stock.vpicktree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="after">
+                <field name="approver_ids" optional="hide" invisible="1"/>
                 <field name="approval_state"
                        string="Approval"
                        optional="show"

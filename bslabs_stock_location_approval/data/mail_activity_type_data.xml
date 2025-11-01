@@ -6,10 +6,6 @@
             <field name="name">Stock Transfer Approval</field>
             <field name="summary">Approve Stock Transfer</field>
             <field name="icon">fa-check-square-o</field>
-            <field name="delay_count">1</field>
-            <field name="delay_unit">days</field>
-            <field name="delay_from">today</field>
-            <field name="res_model_id" ref="stock.model_stock_picking"/>
         </record>
     </data>
 </odoo>
