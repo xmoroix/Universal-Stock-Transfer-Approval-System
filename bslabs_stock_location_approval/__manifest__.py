@@ -29,7 +29,7 @@ Use Cases
 * Quality control checkpoints
 * Multi-level warehouse authorization
     """,
-    'author': 'Bilal Benmerzoug',
+    'author': 'Serenvale',
     'website': 'https://adoctor.org',
     'depends': ['stock', 'mail'],
     'data': [
