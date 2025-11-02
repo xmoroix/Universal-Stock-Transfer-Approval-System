@@ -363,7 +363,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 ## 👨‍💻 Author
 
-**Bilal Benmerzoug**
+**Serenvale**
 - Website: https://adoctor.org
 - GitHub: [\[Your GitHub Profile\]](https://github.com/xmoroix)
 
@@ -404,3 +404,4 @@ the Free Software Foundation, either version 3 of the License, or
 ---
 
 **Ready to improve your inventory control?** Install now and start managing approvals efficiently! 🚀
+
